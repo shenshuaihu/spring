@@ -1,0 +1,18 @@
+
+
+book:
+  author: SSH
+  name: Spring Boot
+author:
+  name: SSH
+  age: 18
+
+server:
+  port: 8888
+logging:
+  file: D:/tmp/log/spring-boot-log.log
+  level:
+    org:
+      springframework:
+        web: DEBUG
+debug: true
