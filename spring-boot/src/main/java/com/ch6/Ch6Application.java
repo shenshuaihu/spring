@@ -6,6 +6,7 @@
 package com.ch6;
 
 import com.ch6.config.AuthorSettings;
+import com.starterhello.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,11 +27,15 @@ public class Ch6Application {
     @Autowired
     private AuthorSettings authorSettings;
 
+    @Autowired
+    private HelloService helloService;
+
     @RequestMapping("/")
     String index() {
         return "Hello Spring Boot，" +
                 " \n authorkName: " + authorSettings.getName() +
-                " \n authorAge: " + authorSettings.getAge() ;
+                " \n authorAge: " + authorSettings.getAge() +
+                " \n 自动装配：" + helloService.sayHello();
     }
 
     public static void main(String[] args) {

@@ -15,4 +15,9 @@ logging:
     org:
       springframework:
         web: DEBUG
+
+# 自动装配
+
+hello:
+  msg: shenshauihu
 debug: true
