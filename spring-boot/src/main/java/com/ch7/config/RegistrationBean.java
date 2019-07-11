@@ -6,6 +6,7 @@
 package com.ch7.config;
 
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
@@ -31,35 +32,21 @@ public class RegistrationBean {
     }
 
     @Bean
+    public YyFilter yyFilter() {
+        return new YyFilter();
+    }
+
+    @Bean
     public ServletRegistrationBean servletRegistrationBean() {
         return new ServletRegistrationBean(new XxServlet(), "/xx/**");
     }
-}
 
-class XxServlet implements Servlet {
-
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new YyFilter());
+        registrationBean.setOrder(2);
+        return registrationBean;
     }
 
-    @Override
-    public ServletConfig getServletConfig() {
-        return null;
-    }
-
-    @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-
-    }
-
-    @Override
-    public String getServletInfo() {
-        return null;
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 }
