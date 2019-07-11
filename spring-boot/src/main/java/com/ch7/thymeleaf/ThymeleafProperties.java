@@ -6,7 +6,7 @@
 package com.ch7.thymeleaf;
 
 /**
- * @description:
+ * @description:  仅用于查询源码 项目中不做使用
  *
  * @author: Shenshuaihu
  * @version: 1.0

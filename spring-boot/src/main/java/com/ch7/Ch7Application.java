@@ -8,6 +8,7 @@ package com.ch7;
 import com.ch7.bean.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,14 @@ public class Ch7Application {
         model.addAttribute("people", people);
         return "index";
     }
+
+    @RequestMapping(value = "/json", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public String json(Model model) {
+        Person person = new Person("aa", 11);
+        model.addAttribute("single", person);
+        return "jsonView";
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(Ch7Application.class, args);
     }
