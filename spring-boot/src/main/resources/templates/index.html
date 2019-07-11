@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>spring-boot</title>
+    <link rel="stylesheet" type="text/css" value="">
+</head>
+<body>
+
+<div>
+    <h3>访问model</h3>
+</div>
+
+<div>
+    <span th:text="${singlePerson.name}"></span>
+</div>
+
+<div th:if="${not #lists.isEmpty(people)}">
+    <h3>列表</h3>
+    <div>
+        <ul>
+             <li th:each="person:${people}">
+                <span th:text="${person.name}"></span>
+                <span th:text="${person.age}"></span>
+                <button th:onclick="'getName(\'' + [[${person.name}]] + '\');'">获得名字</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<script th:src="@{http://libs.baidu.com/jquery/2.0.0/jquery.min.js}"></script>
+<script th:inline="javascript">
+    var single = [[${singlePerson}]]
+    console.log(single.name + "/" + single.age)
+
+    function getName(name) {
+        console.log(name);
+    }
+</script>
+</body>
+</html>
+
