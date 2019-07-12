@@ -3,19 +3,11 @@
  * 版权：Copyright 2017-2022 HAND All Rights Reserved.
  * 描述:
  */
-package com.ch7.config;
+package com.ch7.config.web;
 
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import java.io.IOException;
 
 /**
  * @description:  注册Servlet、Filter、Listener

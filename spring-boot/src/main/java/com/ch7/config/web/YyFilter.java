@@ -3,7 +3,7 @@
  * 版权：Copyright 2017-2022 HAND All Rights Reserved.
  * 描述:
  */
-package com.ch7.config;
+package com.ch7.config.web;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
