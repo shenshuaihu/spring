@@ -33,16 +33,65 @@
 
 
 
-<script th:src="@{http://libs.baidu.com/jquery/2.0.0/jquery.min.js}"></script>
-<script th:src="@{staic/js/sockjs.min.js}"></script>
-<script th:src="@{staic/js/stomp.min.js}"></script>
+<!--<script src="/static/js/sockjs.min.js" charset="utf-8"></script>-->
+<!--<script src="/static/js/stomp.min.js" charset="utf-8"></script>-->
+
+<script th:src="@{/static/js/jquery.min.js}"></script>
+<script th:src="@{/static/js/sockjs.min.js}"></script>
+<script th:src="@{/static/js/stomp.min.js}"></script>
 <script type="application/javascript">
 
     var stompClient = null;
 
     function setConnected(connected) {
-        $("#connect").disabled = connected;
+        console.log('Connected status: ' + connected);
+        document.getElementById("connect").disabled = connected;
+        document.getElementById("disconnect").disabled = !disconnect;
+        document.getElementById("conversationDiv").style.visibility= (connected ? 'visible' : 'hidden');
 
+       // $("#conversationDiv").style.visibility = (connected ? 'visible' : 'hidden');
+        $('response').html();
+    }
+
+    /**
+     * 打开连接
+     */
+    function connect() {
+        // 1、连接SockJS的endpoint
+        var socket = new SockJS('/endpointSSH');
+        // 2、使用STOMP 子协议的WebSocket客户端
+        stompClient = Stomp.over(socket);
+        // 3、连接websockst服务端
+        stompClient.connect({}, function (frame) {
+            setConnected(true);
+            console.log('Connected: ' + frame);
+            // 4、 通过stomp.subscribe订阅/topic/getResponse目标（destination）发生的消息，后端在@SendTo定义
+            stompClient.subscribe('/topic/getResponse', function (respose) {
+                showResponse(JSON.parse(respose.body).responseMessage);
+            });
+        });
+    }
+
+    /**
+     * 关闭连接
+     */
+    function disconnect() {
+        if (stompClient != null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    }
+
+    function sendName() {
+        var name = $('#name').val();
+        // 5、通过 stompClient.send 向/welcome 目标发送消息 服务端在@MessageMapping中定义的
+         stompClient.send("/welcome", {}, JSON.stringify({'name': name}));
+    }
+
+    function showResponse(message) {
+        var response = $("#response");
+        response.html(message);
     }
 
 </script>

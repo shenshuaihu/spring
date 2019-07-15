@@ -24,11 +24,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @version: 1.0
  * @data: 2019-07-11 17:48
  */
-//@Configuration
+@Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/xx").setViewName("/xx");
+        // 映射websocket
+        registry.addViewController("/ws").setViewName("/ws");
     }
 }
