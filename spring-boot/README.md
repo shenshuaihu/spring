@@ -1,14 +1,20 @@
 # Spring Boot
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### ch5
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+    配置文件中读取数据
+ 
+### ch6
 
-### Guides
-The following guides illustrate how to use some features concretely:
+    1、关闭特定的自动配置
+    2、定制Banner
+    3、配置文件 日志配置 Profile配置
+    4、SpringBoot运作原理
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+### ch7
 
+    1、thymeleaf模板引擎
+    2、Web相关配置
+    3、Tomcat替换
+    4、favicon图标配置
+    5、WebSocket 广播式和点对点通信
