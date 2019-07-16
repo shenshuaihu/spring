@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>spring-boot-WebSocket-点对点式-home</title>
+    <link rel="stylesheet" type="text/css" value="">
+</head>
+<body>
+
+<div>
+    <h3>home</h3>
+</div>
+<p>聊天室</p>
+
+<form id="elijahForm">
+    <textarea rows="4" cols="60" name="text"></textarea>
+    <input type="submit">
+</form>
+
+
+
+
+<script th:src="@{/static/js/jquery.min.js}"></script>
+<script th:src="@{/static/js/sockjs.min.js}"></script>
+<script th:src="@{/static/js/stomp.min.js}"></script>
+<script type="application/javascript">
+
+
+    $('#elijahForm').submit(function (e) {
+        e.preventDefault();
+        var text = $('#elijahForm').find('textarea[name="text"]').val();
+        sendSpittle(text);
+    });
+
+    // 1、连接SockJS的endpoint
+    var socket = new SockJS('/endpointChat');
+    // 2、使用STOMP 子协议的WebSocket客户端
+    stomp = Stomp.over(socket);
+    // 3、连接websockst服务端 //默认的和STOMP端点连接
+    stomp.connect("guest", "guest", function (frame) {
+        // 4、 通过stomp.subscribe订阅/topic/getResponse目标（destination）发生的消息，后端在@SendTo定义
+        stomp.subscribe("/user/queue/notifications", function (message) {
+            debugger;
+            var content = message.body;
+            var obj = JSON.parse(content);
+            console.log("admin用户特定的消息1：" + obj.message)
+            console.log("收到一条新消息：" + JSON.parse(respose.message).responseMessage)
+            $('#output').append("<b>Received: " + message.body + "</b><br/>")
+        });
+    });
+
+
+
+
+    function sendSpittle(text) {
+         stomp.send("/chat", {}, text);
+    }
+
+   $('#stop').click(function () {
+       socket.close();
+   })
+</script>
+
+<div id="output"></div>
+
+</body>
+</html>
+
