@@ -24,7 +24,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     /**
-     *  注册STOMP协议的节点（endpoint），并映射的指导的URL。
+     *  注册STOMP协议的节点（endpoint），并映射的对应的URL。
      *  注册一个STOMP的endpoint，并指定使用SickJS协议
      * @param registry
      */
@@ -37,6 +37,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     /**
      *  配置消息代理（Message Broker）
      *  广播式应配置一个/topic 消息代理
+     *  点对点配置 /queue
      * @param registry
      */
     @Override
