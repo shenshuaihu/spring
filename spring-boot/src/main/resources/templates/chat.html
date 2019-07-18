@@ -27,6 +27,9 @@
         e.preventDefault();
         var text = $('#elijahForm').find('textarea[name="text"]').val();
         sendSpittle(text);
+
+        $('#output').append("<b style='color: #ffb774'>Send: " + text + "</b><br/>")
+
     });
 
     // 1、连接SockJS的endpoint
@@ -37,12 +40,7 @@
     stomp.connect("guest", "guest", function (frame) {
         // 4、 通过stomp.subscribe订阅/topic/getResponse目标（destination）发生的消息，后端在@SendTo定义
         stomp.subscribe("/user/queue/notifications", function (message) {
-            debugger;
-            var content = message.body;
-            var obj = JSON.parse(content);
-            console.log("admin用户特定的消息1：" + obj.message)
-            console.log("收到一条新消息：" + JSON.parse(respose.message).responseMessage)
-            $('#output').append("<b>Received: " + message.body + "</b><br/>")
+            $('#output').append("<b style='color: #ff2e71'>Received: " + message.body + "</b><br/>")
         });
     });
 
