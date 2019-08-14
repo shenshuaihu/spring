@@ -30,13 +30,13 @@ public class Ch7Application {
     @RequestMapping("/")
     public String index(Model model) {
 
-        Person single = new Person("aa", 11);
+        Person single = new Person("aa", 11, "文化路97号");
 
         List<Person> people =  new ArrayList<>();
 
-        Person p1 = new Person("xx", 11);
-        Person p2 = new Person("yy", 22);
-        Person p3 = new Person("zz", 33);
+        Person p1 = new Person("xx", 11, "文化路97号");
+        Person p2 = new Person("yy", 22, "文化路97号");
+        Person p3 = new Person("zz", 33, "文化路97号");
         people.add(p1);
         people.add(p2);
         people.add(p3);
@@ -48,7 +48,7 @@ public class Ch7Application {
 
     @RequestMapping(value = "/json", produces = {MediaType.APPLICATION_JSON_VALUE})
     public String json(Model model) {
-        Person person = new Person("aa", 11);
+        Person person = new Person("aa", 11, "文化路97号");
         model.addAttribute("single", person);
         return "jsonView";
     }
