@@ -4,6 +4,7 @@
 
 // 定义模块 actionApp, 并依赖于路由模板 ngRout
 var actionApp = angular.module('actionApp', ['ngRoute']);
+angular.module('ng').filter('tel', function (){});
 
 actionApp.config(['$routeProvider', function ($routeProvider) {
 
