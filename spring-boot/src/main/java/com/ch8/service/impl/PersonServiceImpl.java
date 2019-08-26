@@ -3,16 +3,12 @@
  * 版权：Copyright 2017-2022 HAND All Rights Reserved.
  * 描述:
  */
-package com.example.demo.service.impl;
+package com.ch8.service.impl;
 
-import com.example.demo.domain.Person;
-import com.example.demo.repository.PersonRepository;
-import com.example.demo.service.PersonService;
+import com.ch8.domain.Person;
+import com.ch8.repository.PersonRepository;
+import com.ch8.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

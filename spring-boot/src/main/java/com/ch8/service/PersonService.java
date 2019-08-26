@@ -3,9 +3,9 @@
  * 版权：Copyright 2017-2022 HAND All Rights Reserved.
  * 描述:
  */
-package com.example.demo.service;
+package com.ch8.service;
 
-import com.example.demo.domain.Person;
+import com.ch8.domain.Person;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

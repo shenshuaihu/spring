@@ -2,17 +2,18 @@
 server:
   port: 8888
 
-#spring:
-#  datasource:
-#    url: jdbc:oracle:thin:192.168.99.100:49161:xe
-#    username: boot
-#    password: boot
-#    driver-class-name: oracle.jdbc.OracleDriver
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: 123456
-    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&useSSL=false
+    url: jdbc\:oracle\:thin\:@47.102.111.109\:49161\:xe
+    username: system
+    password: oracle
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  #spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true

@@ -3,16 +3,15 @@
  * 版权：Copyright 2017-2022 HAND All Rights Reserved.
  * 描述:
  */
-package com.example.demo.domain;
+package com.ch8.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.hibernate.annotations.NamedQueries;
+import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 /**
@@ -30,7 +29,7 @@ import javax.persistence.NamedQuery;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String name;
     private Integer age;

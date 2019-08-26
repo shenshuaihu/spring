@@ -13,9 +13,9 @@ server:
 #  session-timeout: 10
 # 默认访问路径
 #  context-path: /
-#  tomcat:
-#    context-path: /
-#    uri-encoding: UTF-8
+  tomcat:
+    context-path: /
+    uri-encoding: UTF-8
 #  ssl:
 #    key-store: .keystore
 #    key-password: springboot
