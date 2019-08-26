@@ -6,6 +6,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Person;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * @data: 2019-08-22 23:35
  */
 
+@Repository
 public interface PersonService {
 
     List<Person> findByAddress(String address);
