@@ -20,8 +20,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * @version: 1.0
  * @data: 2019-07-15 18:31
  */
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override

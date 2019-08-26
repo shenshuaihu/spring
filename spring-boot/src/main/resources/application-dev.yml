@@ -35,7 +35,7 @@ logging:
 hello:
   msg: shenshauihu
 
-debug: true
+#debug: true
 
 
 #spring:
@@ -45,3 +45,14 @@ debug: true
 spring:
   mvc:
     static-path-pattern: /static/**
+
+  datasource:
+    url: jdbc:oracle:thin:@47.102.111.109:49161:xe
+    username: system
+    password: oracle
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
