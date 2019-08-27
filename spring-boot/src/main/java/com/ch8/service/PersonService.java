@@ -6,6 +6,8 @@
 package com.ch8.service;
 
 import com.ch8.domain.Person;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +22,26 @@ import java.util.List;
 
 public interface PersonService {
 
+    Person save(Person person);
+
     List<Person> findByAddress(String address);
 
-    Person save(Person person);
+    List<Person> findByName(String name);
+
+    List<Person> findByNameAndAddress(String name, String address);
+
+    List<Person> withNameAndAddressQuery(String name, String address);
+
+    /**
+     * 分页
+     */
+    Page<Person> findAll(Integer page, Integer size);
+
+    /**
+     * 排序
+     * @param sort 需要排序的字段
+     * @return
+     */
+    List<Person> findAllSort(String sort);
 
 }
