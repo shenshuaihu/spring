@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# 上层目录的idea文件
+../.idea
