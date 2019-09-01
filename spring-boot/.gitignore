@@ -32,3 +32,4 @@ build/
 
 # 上层目录的idea文件
 ../.idea
+**/.idea/**
