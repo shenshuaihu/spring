@@ -5,6 +5,7 @@
  */
 package com.ch8.service.impl;
 
+import com.ch8.dao.PersonAutoRepository;
 import com.ch8.domain.Person;
 import com.ch8.repository.PersonRepository;
 import com.ch8.service.PersonService;
@@ -29,6 +30,9 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     private PersonRepository personRepository;
+
+    //@Autowired
+    //private PersonAutoRepository autoRepository;
 
     @Override
     public List<Person> findByAddress(String address) {
@@ -63,4 +67,10 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> findAllSort(String sort) {
         return personRepository.findAll(new Sort(Sort.Direction.ASC, sort));
     }
+
+   /* @Override
+    public Page<Person> auto(Person person, PageRequest pageRequest) {
+       // return autoRepository.findByAuto(person, pageRequest);
+        return null;
+    }*/
 }

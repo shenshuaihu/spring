@@ -5,6 +5,7 @@
  */
 package com.ch8;
 
+import com.ch8.support.CustomRepositoryFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

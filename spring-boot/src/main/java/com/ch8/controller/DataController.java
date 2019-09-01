@@ -6,10 +6,10 @@
 package com.ch8.controller;
 
 import com.ch8.domain.Person;
-import com.ch8.repository.PersonRepository;
 import com.ch8.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -64,5 +64,12 @@ public class DataController {
     public Page<Person> page(Integer page, Integer size) {
         return personService.findAll(page, size);
     }
+
+    @RequestMapping("/auto")
+    public Page<Person> auto(Person person) {
+       // return personService.auto(person, new PageRequest(0, 10));
+        return null;
+    }
+
 
 }
