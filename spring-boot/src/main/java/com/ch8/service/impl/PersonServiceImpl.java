@@ -73,4 +73,9 @@ public class PersonServiceImpl implements PersonService {
        // return autoRepository.findByAuto(person, pageRequest);
         return null;
     }*/
+
+    @Override
+    public Person findByNameStartsWith(String name) {
+        return personRepository.findByNameStartsWith(name);
+    }
 }

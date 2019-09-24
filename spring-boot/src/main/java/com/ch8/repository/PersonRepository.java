@@ -14,6 +14,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +29,7 @@ import java.util.List;
  * @version: 1.0
  * @data: 2019-08-15 16:46
  */
-@Repository
+@RepositoryRestResource(path = "person")
 public interface PersonRepository extends JpaRepository<Person, Long>{
 
     /**
@@ -102,4 +104,6 @@ public interface PersonRepository extends JpaRepository<Person, Long>{
     List<Person> nameAndAddressQuery(String name, String address);
 
 
+    @RestResource(path = "nameStartsWith", rel = "nameStartsWith")
+    Person findByNameStartsWith(@Param("name") String name);
 }

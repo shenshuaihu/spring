@@ -50,4 +50,5 @@ public interface PersonService {
      */
 //    Page<Person> auto(Person person, PageRequest pageRequest);
 
+    Person findByNameStartsWith(String name);
 }
