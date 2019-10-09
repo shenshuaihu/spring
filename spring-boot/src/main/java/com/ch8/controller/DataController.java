@@ -71,5 +71,16 @@ public class DataController {
         return null;
     }
 
+    @RequestMapping("/rollback")
+    public Person rollback(String name, String address, Integer age) {
+        Person p = personService.savePersonWithRollBack(new Person(null, name, age, address));
+        return p;
+    }
+
+    @RequestMapping("/norollback")
+    public Person norollback(String name, String address, Integer age) {
+        Person p = personService.savePersonWithoutRollBack(new Person(null, name, age, address));
+        return p;
+    }
 
 }

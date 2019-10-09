@@ -51,4 +51,10 @@ public interface PersonService {
 //    Page<Person> auto(Person person, PageRequest pageRequest);
 
     Person findByNameStartsWith(String name);
+
+    /**
+     * 以下是事务的处理，包含异常的处理
+     */
+    Person savePersonWithRollBack(Person person);
+    Person savePersonWithoutRollBack(Person person);
 }
