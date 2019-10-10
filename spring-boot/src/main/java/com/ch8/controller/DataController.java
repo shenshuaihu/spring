@@ -30,7 +30,12 @@ public class DataController {
 
     @RequestMapping("/save")
     public Person save(String name, String address, Integer age) {
-        Person p = personService.save(new Person(null, name, age, address));
+        Person person = new Person();
+        person.setId(null);
+        person.setName(name);
+        person.setAge(age);
+        person.setAddress(address);
+        Person p = personService.save(person);
         return p;
     }
 
@@ -73,14 +78,36 @@ public class DataController {
 
     @RequestMapping("/rollback")
     public Person rollback(String name, String address, Integer age) {
-        Person p = personService.savePersonWithRollBack(new Person(null, name, age, address));
+        Person person = new Person();
+        person.setId(null);
+        person.setName(name);
+        person.setAge(age);
+        person.setAddress(address);
+        Person p = personService.savePersonWithRollBack(person);
         return p;
     }
 
     @RequestMapping("/norollback")
     public Person norollback(String name, String address, Integer age) {
-        Person p = personService.savePersonWithoutRollBack(new Person(null, name, age, address));
+        Person person = new Person();
+        person.setId(null);
+        person.setName(name);
+        person.setAge(age);
+        person.setAddress(address);
+        Person p = personService.savePersonWithoutRollBack(person);
         return p;
     }
+
+    @RequestMapping("/testTransactional")
+    public Person testTransactional(String name, String address, Integer age) {
+        Person person = new Person();
+        person.setId(null);
+        person.setName(name);
+        person.setAge(age);
+        person.setAddress(address);
+        Person p = personService.testTransactional(person);
+        return p;
+    }
+
 
 }

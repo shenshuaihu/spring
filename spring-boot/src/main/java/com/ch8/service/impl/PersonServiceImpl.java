@@ -15,6 +15,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -112,6 +114,43 @@ public class PersonServiceImpl implements PersonService {
             throw new IllegalArgumentException(name + "已经存在，数据不会回滚");
         }
         return p;
+    }
+
+
+    @Transactional(noRollbackFor = RuntimeException.class, timeout = 3000)
+    public Person testTransactional(Person person) {
+        person.setMethod("testTransactional()");
+        person.setDescription("noRollbackFor = RuntimeException.class,特定异常不回滚");
+        Person p = personRepository.save(person);
+        this.transactional1(person);
+        try {
+        } catch (RuntimeException e) {
+          //  throw new RuntimeException(person.getName() + "更新异常，数据不会回滚");
+        }
+        return p;
+    }
+
+    /**
+     *  REQUIRED 也是默认是方式
+     *  如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。
+     */
+
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = RuntimeException.class)
+    public Person transactional1(Person person) {
+        Person per = new Person();
+        per.setId(null);
+        per.setName(person.getName());
+        per.setAge(person.getAge());
+        per.setAddress(person.getAddress());
+        per.setMethod("transactional1()");
+        per.setDescription("REQUIRED，如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。");
+        Person p = personRepository.save(per);
+        String name = "elijah";
+        if (p.getName().equals(name)) {
+            throw new RuntimeException(name + "已经存在，数据回滚");
+        }
+        return person;
     }
 
 
