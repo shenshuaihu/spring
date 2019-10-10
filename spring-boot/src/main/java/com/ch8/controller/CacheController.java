@@ -7,8 +7,8 @@ package com.ch8.controller;
 
 import com.ch8.domain.Location;
 import com.ch8.domain.Person;
-import com.ch8.domain.PersonDoc;
-import com.ch8.repository.PersonDocRepository;
+import com.ch8.domain.PersonMongo;
+import com.ch8.repository.PersonMongoRepository;
 import com.ch8.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +34,7 @@ public class CacheController {
     private PersonService personService;
 
     @Autowired
-    private PersonDocRepository personDocRepository;
+    private PersonMongoRepository personMongoRepository;
 
     @RequestMapping("/put")
     public Person put(String name, String address, Integer age) {
@@ -71,10 +71,10 @@ public class CacheController {
      */
 
     @RequestMapping("/save/personDoc")
-    public PersonDoc save() {
-        PersonDoc personDoc = new PersonDoc();
-        personDoc.setName("沈帅虎");
-        personDoc.setAge(18);
+    public PersonMongo save() {
+        PersonMongo personMongo = new PersonMongo();
+        personMongo.setName("沈帅虎");
+        personMongo.setAge(18);
 
         Collection<Location> locations =  new LinkedHashSet<Location>();
         Location location1 = new Location("郑州", "2018");
@@ -83,19 +83,19 @@ public class CacheController {
         locations.add(location1);
         locations.add(location2);
         locations.add(location3);
-        personDoc.setLocations(locations);
+        personMongo.setLocations(locations);
 
-        return personDocRepository.save(personDoc);
+        return personMongoRepository.save(personMongo);
     }
 
     @RequestMapping("/findByName/personDoc")
-    public PersonDoc findByName(String name) {
-        return personDocRepository.findByName(name);
+    public PersonMongo findByName(String name) {
+        return personMongoRepository.findByName(name);
     }
 
     @RequestMapping("/withQueryFindByAge/personDoc")
-    public List<PersonDoc> withQueryFindByAge(Integer age) {
-        return personDocRepository.withQueryFindByAge(age);
+    public List<PersonMongo> withQueryFindByAge(Integer age) {
+        return personMongoRepository.withQueryFindByAge(age);
     }
 
 }

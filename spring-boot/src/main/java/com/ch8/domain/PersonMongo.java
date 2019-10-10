@@ -32,7 +32,7 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonDoc {
+public class PersonMongo {
 
     /**
      * 文档ID

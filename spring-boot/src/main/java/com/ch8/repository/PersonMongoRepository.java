@@ -5,7 +5,7 @@
  */
 package com.ch8.repository;
 
-import com.ch8.domain.PersonDoc;
+import com.ch8.domain.PersonMongo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
@@ -19,9 +19,9 @@ import java.util.List;
  * @version: 1.0
  * @data: 2019-08-15 16:46
  */
-public interface PersonDocRepository extends MongoRepository<PersonDoc, String> {
+public interface PersonMongoRepository extends MongoRepository<PersonMongo, String> {
 
-    PersonDoc findByName(String name);
+    PersonMongo findByName(String name);
 
     /**
      * 查询参数构造JSON字符串即可
@@ -29,6 +29,6 @@ public interface PersonDocRepository extends MongoRepository<PersonDoc, String> 
      * @return
      */
     @Query("{'age': ?0}")
-    List<PersonDoc> withQueryFindByAge(Integer age);
+    List<PersonMongo> withQueryFindByAge(Integer age);
 
 }
