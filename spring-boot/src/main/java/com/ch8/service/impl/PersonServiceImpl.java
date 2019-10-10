@@ -142,7 +142,7 @@ public class PersonServiceImpl implements PersonService {
      */
 
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = RuntimeException.class)
+    @Transactional(propagation = Propagation.NEVER, rollbackFor = RuntimeException.class)
     public Person transactional1(Person person) {
         Person per = new Person();
         per.setId(null);

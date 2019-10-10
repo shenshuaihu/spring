@@ -60,3 +60,8 @@ spring:
   data:
     rest:
       base-path: /api
+
+    mongodb:
+      host: 47.102.111.109
+      port: 17012
+      uri: mongodb://47.102.111.109:17012/test
