@@ -9,7 +9,12 @@ import com.ch8.dao.PersonAutoRepository;
 import com.ch8.domain.Person;
 import com.ch8.repository.PersonRepository;
 import com.ch8.service.PersonService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +34,7 @@ import java.util.List;
  * @data: 2019-08-22 23:35
  */
 @Service
+@Slf4j
 public class PersonServiceImpl implements PersonService {
 
     @Autowired
@@ -117,15 +123,15 @@ public class PersonServiceImpl implements PersonService {
     }
 
 
-    @Transactional(noRollbackFor = RuntimeException.class, timeout = 3000)
+    @Transactional(rollbackFor = RuntimeException.class, timeout = 3000)
     public Person testTransactional(Person person) {
         person.setMethod("testTransactional()");
         person.setDescription("noRollbackFor = RuntimeException.class,特定异常不回滚");
         Person p = personRepository.save(person);
-        this.transactional1(person);
         try {
+            this.transactional1(person);
         } catch (RuntimeException e) {
-          //  throw new RuntimeException(person.getName() + "更新异常，数据不会回滚");
+            throw new RuntimeException(person.getName() + "更新异常，数据不会回滚");
         }
         return p;
     }
@@ -151,6 +157,47 @@ public class PersonServiceImpl implements PersonService {
             throw new RuntimeException(name + "已经存在，数据回滚");
         }
         return person;
+    }
+
+
+    /**
+     *  使用@CachePut 来更新或者新增数据到缓存中
+     *
+     * @param person
+     * @return
+     */
+    @Override
+    @CachePut(value = "people", key = "#person.id")
+    public Person saveCache(Person person) {
+        Person p = personRepository.save(person);
+        log.info("新增缓存 value: people, key: {}", p.getId());
+        return p;
+    }
+
+    /**
+     * CacheEvict 删除key为id的数据
+     *
+     * @param person
+     */
+    @Override
+    @CacheEvict(value = "people")
+    public void removeCache(Person person) {
+        personRepository.delete(person);
+        log.info("清空缓存 value: people, key: {} ", person.getName());
+    }
+
+    /**
+     *  使用@Cacheable 来更新或者新增数据到缓存中
+     *
+     * @param person
+     * @return
+     */
+    @Override
+    @Cacheable(value = "people", key = "#person.name")
+    public Person findOneCache(Person person) {
+        Person p = personRepository.findByName(person.getName()).get(0);
+        log.info("新增缓存 value: people, key: {}", p.getName());
+        return p;
     }
 
 

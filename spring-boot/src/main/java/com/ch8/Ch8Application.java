@@ -8,6 +8,7 @@ package com.ch8;
 import com.ch8.support.CustomRepositoryFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
@@ -18,6 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @data: 2019-08-15 10:37
  */
 @SpringBootApplication
+@EnableCaching
 public class Ch8Application {
     public static void main(String[] args) {
         SpringApplication.run(Ch8Application.class, args);

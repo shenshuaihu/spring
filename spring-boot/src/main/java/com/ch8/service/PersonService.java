@@ -59,4 +59,15 @@ public interface PersonService {
     Person savePersonWithoutRollBack(Person person);
 
     Person testTransactional(Person person);
+
+
+    /**
+     * 以下缓存的处理
+     */
+    Person saveCache(Person person);
+
+    void removeCache(Person person);
+
+    Person findOneCache(Person person);
+
 }

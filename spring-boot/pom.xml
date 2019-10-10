@@ -135,6 +135,13 @@
             <!--<version>1.5.14.RELEASE</version>-->
         <!--</dependency>-->
 
+        <!-- 对缓存的支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
