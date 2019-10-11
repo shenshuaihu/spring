@@ -13,35 +13,29 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
 
 /**
- * @description: 与MongoDB使用测试
+ * @description: 与redis使用测试
  *
  * @author: ShenShuaihu
  * @version: 1.0
  * @data: 2019-10-10 15:05
  */
-@Document
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonMongo {
+public class PersonRedis implements Serializable {
 
     /**
-     * 文档ID
+     * 必须使用时间序列号接口，Jackson做序列化需要一个空构造
      */
-    @Id
+    private static final long serialVersionUID = 1L;
     private String id;
     private String name;
     private Integer age;
-
-    /**
-     * 文档中命名为locs，locations属性以数组形式存在当前数据中，即同另外一种名字来命名数据
-     */
-    @Field("locs")
-    private Collection<Location> locations =  new LinkedHashSet<Location>();
 
 }

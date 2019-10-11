@@ -5,9 +5,11 @@
  */
 package com.ch8.controller;
 
+import com.ch8.dao.PersonRedisDao;
 import com.ch8.domain.Location;
 import com.ch8.domain.Person;
 import com.ch8.domain.PersonMongo;
+import com.ch8.domain.PersonRedis;
 import com.ch8.repository.PersonMongoRepository;
 import com.ch8.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,12 @@ public class CacheController {
 
     @Autowired
     private PersonMongoRepository personMongoRepository;
+
+    /**
+     * redis的DAO层
+     */
+    @Autowired
+    private PersonRedisDao personRedisDao;
 
     @RequestMapping("/put")
     public Person put(String name, String address, Integer age) {
@@ -96,6 +104,39 @@ public class CacheController {
     @RequestMapping("/withQueryFindByAge/personDoc")
     public List<PersonMongo> withQueryFindByAge(Integer age) {
         return personMongoRepository.withQueryFindByAge(age);
+    }
+
+
+    /**
+     * 以下是对Redis的数据测试
+     */
+
+    @RequestMapping("/redis/set/person")
+    public PersonRedis redisSet(String id) {
+        PersonRedis personRedis = new PersonRedis();
+        personRedis.setId(id);
+        personRedis.setName("elijah");
+        personRedis.setAge(18);
+        personRedisDao.save(personRedis);
+        return personRedis;
+    }
+
+
+
+    @RequestMapping("/redis/set")
+    public String redisGet(String key, String value) {
+        personRedisDao.setStringRedisTemplateDemo(key,value);
+        return key + " : " + value;
+    }
+
+    @RequestMapping("/redis/get")
+    public String redisGet(String name) {
+        return personRedisDao.getString(name);
+    }
+
+    @RequestMapping("/redis/get/person")
+    public PersonRedis redisGetPerson(String id) {
+        return personRedisDao.getPersonRedis(id);
     }
 
 }

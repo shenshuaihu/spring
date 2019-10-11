@@ -65,3 +65,8 @@ spring:
       host: 47.102.111.109
       port: 17012
       uri: mongodb://47.102.111.109:17012/test
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 5
