@@ -18,3 +18,12 @@
     3、Tomcat替换
     4、favicon图标配置
     5、WebSocket 广播式和点对点通信
+    
+### ch8
+    
+    1、jpa与Oracle数据库使用
+    2、springdate rest
+    3、事务 transaction
+    4、数据缓存cache
+    5、非关系型数据库 MongoDB与Redis
+        
