@@ -3,3 +3,22 @@ insert into person (id,name,age,address) values (hibernate_sequence.nextval, 'SS
 insert into person (id,name,age,address) values (hibernate_sequence.nextval, 'SSH', 17, '成都');
 insert into person (id,name,age,address) values (hibernate_sequence.nextval, 'SSH', 4, '平顶山');
 insert into person (id,name,age,address) values (hibernate_sequence.nextval, 'John', 15, '许昌');
+
+
+#ch9 权限认证
+
+# 自动创建表
+create table sys_role (id number(19,0) not null, name varchar2(255 char), primary key (id))
+create table sys_user (id number(19,0) not null, password varchar2(255 char), username varchar2(255 char), primary key (id))
+create table sys_user_roles (sys_user_id number(19,0) not null, roles_id number(19,0) not null)
+alter table sys_user_roles add constraint FKdpvc6d7xqpqr43dfuk1s27cqh foreign key (roles_id) references sys_role
+alter table sys_user_roles add constraint FKd0ut7sloes191bygyf7a3pk52 foreign key (sys_user_id) references sys_user
+
+insert into SYS_USER (id, password, username) values (1, 'ssh', 'ssh');
+insert into SYS_USER (id, password, username) values (2, 'elijah', 'elijah');
+
+insert into SYS_ROLE(id, name) VALUES (1, 'ROLE_ADMIN');
+insert into SYS_ROLE(id, name) VALUES (2, 'ROLE_USER');
+
+insert into SYS_USER_ROLES(sys_user_id, roles_id) VALUES (1, 1);
+insert into SYS_USER_ROLES(sys_user_id, roles_id) VALUES (2, 2);

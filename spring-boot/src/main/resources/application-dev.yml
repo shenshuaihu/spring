@@ -24,7 +24,7 @@ server:
 
 
 logging:
-  file: D:/tmp/log/spring-boot-log.log
+  file: D:/tmp/log/spring-boot/spring-boot-log.log
   level:
     org:
       springframework:
@@ -70,3 +70,6 @@ spring:
     host: 127.0.0.1
     port: 6379
     database: 5
+
+  thymeleaf:
+    cache: false
