@@ -1,0 +1,105 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:osb="http://soa.cmcc.com/OSB_RBS_CMF_HQ_ImportPayApplicationDocSrv" xmlns:msg="http://soa.cmcc.com/MsgHeader">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <osb:InputParameters>
+         <osb:MSGHEADER>
+            <msg:SOURCESYSTEMID></msg:SOURCESYSTEMID>
+            <msg:SOURCESYSTEMNAME></msg:SOURCESYSTEMNAME>
+            <msg:TOKEN></msg:TOKEN>
+            <msg:USER_ID> </msg:USER_ID>
+            <msg:USER_NAME> </msg:USER_NAME>
+            <msg:USER_PASSWD> </msg:USER_PASSWD>
+            <msg:SUBMIT_DATE> </msg:SUBMIT_DATE>
+            <msg:PAGE_SIZE> </msg:PAGE_SIZE>
+            <msg:CURRENT_PAGE> </msg:CURRENT_PAGE>
+            <msg:TOTAL_RECORD> </msg:TOTAL_RECORD>
+            <msg:PROVINCE_CODE> </msg:PROVINCE_CODE>
+            <msg:ROUTE_CODE> </msg:ROUTE_CODE>
+            <msg:TRACE_ID> </msg:TRACE_ID>
+            <msg:RESERVED_1></msg:RESERVED_1>
+            <msg:RESERVED_2></msg:RESERVED_2>
+         </osb:MSGHEADER>
+         <osb:INPUTCOLLECTION>
+            <!--Zero or more repetitions:-->
+            <osb:INPUTCOLLECTION_ITEM>
+               <osb:PRI_KEY>1</osb:PRI_KEY>
+               <osb:SOURCE_SYSTEM_CODE>1</osb:SOURCE_SYSTEM_CODE>
+               <osb:SOURCE_DOCUMENT_NUM>1</osb:SOURCE_DOCUMENT_NUM>
+               <osb:SOURCE_DOCUMENT_URL>1</osb:SOURCE_DOCUMENT_URL>
+               <osb:BATCH_NUMBER>1</osb:BATCH_NUMBER>
+               <osb:OPR_EMPLOYEE_CODE>1</osb:OPR_EMPLOYEE_CODE>
+               <osb:PHONE_NUMBER>1</osb:PHONE_NUMBER>
+               <osb:OPR_COMPANY_CODE>1</osb:OPR_COMPANY_CODE>
+               <osb:OPR_UNIT_CODE>1</osb:OPR_UNIT_CODE>
+               <osb:SUMMARY>1</osb:SUMMARY>
+               <osb:TOTAL_AMOUNT>1</osb:TOTAL_AMOUNT>
+               <osb:CURRENCY_CODE>1</osb:CURRENCY_CODE>
+               <osb:CLAIM_TYPE_CODE>1</osb:CLAIM_TYPE_CODE>
+               <osb:STATUS_CODE>1</osb:STATUS_CODE>
+               <osb:DESCRIPTION>1</osb:DESCRIPTION>
+               <osb:ATTACHMENT_NUMBER>1</osb:ATTACHMENT_NUMBER>
+               <osb:EMERGENCY_PAY_FLAG>1</osb:EMERGENCY_PAY_FLAG>
+               <osb:PAYMENT_METHOD_CODE>1</osb:PAYMENT_METHOD_CODE>
+               <osb:PAID_BANK_ACCOUNT>1</osb:PAID_BANK_ACCOUNT>
+               <osb:PAID_CNAP_NUMBER>1</osb:PAID_CNAP_NUMBER>
+               <osb:PAID_CURRENCY_CODE>1</osb:PAID_CURRENCY_CODE>
+               <osb:IS_NEW_TEMPLATES>1</osb:IS_NEW_TEMPLATES>
+               <osb:BUSINESS_MAJOR_CLASS_CODE>1</osb:BUSINESS_MAJOR_CLASS_CODE>
+               <osb:CHARGE_PARTY_TYPE_CODE>1</osb:CHARGE_PARTY_TYPE_CODE>
+               <osb:CHARGE_PARTY_NUM>1</osb:CHARGE_PARTY_NUM>
+               <osb:ATTRIBUTE5>1</osb:ATTRIBUTE5>
+               <osb:ATTRIBUTE6>1</osb:ATTRIBUTE6>
+               <osb:ATTRIBUTE7>1</osb:ATTRIBUTE7>
+               <osb:ATTRIBUTE8>1</osb:ATTRIBUTE8>
+               <osb:ATTRIBUTE9>1</osb:ATTRIBUTE9>
+               <osb:ATTRIBUTE10>1</osb:ATTRIBUTE10>
+               <osb:ATTRIBUTE11>1</osb:ATTRIBUTE11>
+               <osb:ATTRIBUTE12>1</osb:ATTRIBUTE12>
+               <osb:ATTRIBUTE13>1</osb:ATTRIBUTE13>
+               <osb:ATTRIBUTE14>1</osb:ATTRIBUTE14>
+               <osb:ATTRIBUTE15>1</osb:ATTRIBUTE15>
+               <osb:INPUT_EXT>1</osb:INPUT_EXT>
+               <osb:PAYMENT_LINE>
+                  <!--Zero or more repetitions:-->
+                  <osb:PAYMENT_LINE_ITEM>
+                     <osb:PRI_KEY>1</osb:PRI_KEY>
+                     <osb:SOURCE_DOC_LINE_NUM>1</osb:SOURCE_DOC_LINE_NUM>
+                     <osb:LEDGER_CLAIM_NUM>1</osb:LEDGER_CLAIM_NUM>
+                     <osb:LEDGER_CLAIM_TYPE_CODE>1</osb:LEDGER_CLAIM_TYPE_CODE>
+                     <osb:LEDGER_BUSINESS_MAJOR_CODE>1</osb:LEDGER_BUSINESS_MAJOR_CODE>
+                     <osb:LEDGER_CONTRACT_NUMBER>1</osb:LEDGER_CONTRACT_NUMBER>
+                     <osb:LEDGER_CHARGE_PARTY_TYPE_CODE>1</osb:LEDGER_CHARGE_PARTY_TYPE_CODE>
+                     <osb:LEDGER_CHARGE_PARTY_NUM>1</osb:LEDGER_CHARGE_PARTY_NUM>
+                     <osb:LEDGER_RECEIPT_PARTY_TYPE_CODE>1</osb:LEDGER_RECEIPT_PARTY_TYPE_CODE>
+                     <osb:LEDGER_RECEIPT_PARTY_NUM>1</osb:LEDGER_RECEIPT_PARTY_NUM>
+                     <osb:LEDGER_AGENT_CODE>1</osb:LEDGER_AGENT_CODE>
+                     <osb:PROJECT_NUM>1</osb:PROJECT_NUM>
+                     <osb:PO_NUMBER>1</osb:PO_NUMBER>
+                     <osb:PAYMENT_AMOUNT>1</osb:PAYMENT_AMOUNT>
+                     <osb:RECEIPT_ACCOUNT_NAME>1</osb:RECEIPT_ACCOUNT_NAME>
+                     <osb:RECEIPT_ACCOUNT>1</osb:RECEIPT_ACCOUNT>
+                     <osb:RECEIPT_CNAP_NUMBER>1</osb:RECEIPT_CNAP_NUMBER>
+                     <osb:LINE_SUMMARY>1</osb:LINE_SUMMARY>
+                     <osb:ATTRIBUTE1>1</osb:ATTRIBUTE1>
+                     <osb:ATTRIBUTE2>1</osb:ATTRIBUTE2>
+                     <osb:ATTRIBUTE3>1</osb:ATTRIBUTE3>
+                     <osb:ATTRIBUTE4>1</osb:ATTRIBUTE4>
+                     <osb:ATTRIBUTE5>1</osb:ATTRIBUTE5>
+                     <osb:ATTRIBUTE6>1</osb:ATTRIBUTE6>
+                     <osb:ATTRIBUTE7>1</osb:ATTRIBUTE7>
+                     <osb:ATTRIBUTE8>1</osb:ATTRIBUTE8>
+                     <osb:ATTRIBUTE9>1</osb:ATTRIBUTE9>
+                     <osb:ATTRIBUTE10>1</osb:ATTRIBUTE10>
+                     <osb:ATTRIBUTE11>1</osb:ATTRIBUTE11>
+                     <osb:ATTRIBUTE12>1</osb:ATTRIBUTE12>
+                     <osb:ATTRIBUTE13>1</osb:ATTRIBUTE13>
+                     <osb:ATTRIBUTE14>1</osb:ATTRIBUTE14>
+                     <osb:ATTRIBUTE15>1</osb:ATTRIBUTE15>
+                     <osb:INPUT_EXT>1</osb:INPUT_EXT>
+                  </osb:PAYMENT_LINE_ITEM>
+               </osb:PAYMENT_LINE>
+            </osb:INPUTCOLLECTION_ITEM>
+         </osb:INPUTCOLLECTION>
+      </osb:InputParameters>
+   </soapenv:Body>
+</soapenv:Envelope>
