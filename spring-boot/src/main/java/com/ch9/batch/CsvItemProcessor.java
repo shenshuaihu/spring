@@ -10,7 +10,7 @@ import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
 
 /**
- * @description: 数据处理
+ * @description: 数据处理  对传入是数据进行处理格式变更等
  *
  * @author: ShenShuaihu
  * @version: 1.0

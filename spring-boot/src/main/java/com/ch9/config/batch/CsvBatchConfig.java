@@ -50,6 +50,12 @@ import java.io.File;
 @EnableBatchProcessing
 public class CsvBatchConfig {
 
+    /**
+     *  用来读取数据
+     *
+     * @return
+     * @throws Exception
+     */
     @Bean
     public ItemReader<Person> reader() throws Exception {
         // 文件是否存在
@@ -79,6 +85,11 @@ public class CsvBatchConfig {
         return reader;
     }
 
+    /**
+     * 用来处理数据
+     *
+     * @return
+     */
     @Bean
     public ItemProcessor<Person, Person> processor() {
         CsvItemProcessor processor = new CsvItemProcessor();
@@ -86,6 +97,12 @@ public class CsvBatchConfig {
         return processor;
     }
 
+    /**
+     * 用来输出数据 即存库
+     *
+     * @param dataSource
+     * @return
+     */
     @Bean
     public ItemWriter<Person> writer(DataSource dataSource) {
         JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<>();
@@ -141,7 +158,9 @@ public class CsvBatchConfig {
 
     /**
      * Step 定义
-     * 批量处理数据  每次提交6500数据
+     * 一个Job有一个或多个Step组成，Step有读、处理、写三部分操作组成；通过JobLauncher启动Job，
+     *          启动时从JobRepository获取Job Execution；
+     *          当前运行的Job及Step的结果及状态保存在JobRepository中
      *
      * @param stepBuilderFactory
      * @param reader

@@ -9,7 +9,7 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 
 /**
- * @description: JOB 监听
+ * @description: JOB 监听  目前用于时间的记录
  *
  * @author: ShenShuaihu
  * @version: 1.0

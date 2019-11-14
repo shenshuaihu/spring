@@ -16,7 +16,7 @@ import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 /**
- * @description:
+ * @description:  数据校验类 做技术的数据校验
  *
  * @author: ShenShuaihu
  * @version: 1.0
