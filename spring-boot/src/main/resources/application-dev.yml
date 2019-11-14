@@ -47,7 +47,7 @@ spring:
     static-path-pattern: /static/**
 
   datasource:
-    url: jdbc:oracle:thin:@47.102.111.109:49161:xe
+    url: jdbc:oracle:thin:@47.102.111.109:16001:xe
     username: boot
     password: boot
     driver-class-name: oracle.jdbc.driver.OracleDriver
@@ -73,3 +73,6 @@ spring:
 
   thymeleaf:
     cache: false
+
+  batch:
+    initialize-schema: always

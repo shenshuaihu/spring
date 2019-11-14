@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 /**
  * @description: person javabean
  *
- * @author: Shenshuaihu
+ * @author: ShenShuaihu
  * @version: 1.0
  * @data: 2019-07-11 11:57
  */
@@ -28,11 +28,9 @@ import javax.validation.constraints.Size;
 public class Person {
 
     private Long id;
-    @Size(max = 4, min = 2)
+    @Size(max = 12, min = 2)
     private String name;
     private Integer age;
     private String address;
     private String nation;
-    private String method;
-    private String description;
 }

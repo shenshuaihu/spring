@@ -31,9 +31,11 @@ import org.springframework.batch.item.validator.Validator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.PathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.io.File;
 
 /**
  * @description:
@@ -48,10 +50,17 @@ public class CsvBatchConfig {
 
     @Bean
     public ItemReader<Person> reader() throws Exception {
+        // 文件是否存在
+        PathResource pathResource = new PathResource("D:/tmp/csv/people.csv");
+        if (!pathResource.exists()) {
+            System.out.println("文件不存在。。。。。。。。。。");
+        }
+        System.out.println("文件存在。。。。。。。。。。" + pathResource.exists());
         // 使用 FlatFileItemReader 读取文件
         FlatFileItemReader<Person> reader = new  FlatFileItemReader<Person>();
-        reader.setResource(new ClassPathResource("person.csv"));
+        reader.setResource(pathResource);
         // 模型映射
+        DefaultLineMapper<Person> defaultLineMapper = new DefaultLineMapper<Person>();
         reader.setLineMapper(new DefaultLineMapper<Person>(){
             {setLineTokenizer(new DelimitedLineTokenizer() {
                 {
@@ -80,7 +89,7 @@ public class CsvBatchConfig {
         JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
         String sql = "insert into person " + "(id, name, age, nation, address)"
-                + "values(hibernate_squence.nextval, :name, :age, nation, :address)";
+                + "values(hibernate_sequence.nextval, :name, :age, :nation, :address)";
         writer.setSql(sql);
         writer.setDataSource(dataSource);
         return writer;
@@ -139,10 +148,10 @@ public class CsvBatchConfig {
      * @return
      */
     @Bean
-    public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer, ItemProcessor<Person, Person> processor) {
+    public Step step(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer, ItemProcessor<Person, Person> processor) {
         // 给step绑定reader、processor和writer
         return stepBuilderFactory
-                .get("step1")
+                .get("step")
                 .<Person, Person>chunk(6500)
                 .reader(reader)
                 .processor(processor)

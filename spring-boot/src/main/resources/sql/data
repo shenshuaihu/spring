@@ -5,7 +5,9 @@ insert into person (id,name,age,address) values (hibernate_sequence.nextval, 'SS
 insert into person (id,name,age,address) values (hibernate_sequence.nextval, 'John', 15, '许昌');
 
 
-#ch9 权限认证
+#ch9
+
+#权限认证
 
 # 自动创建表
 create table sys_role (id number(19,0) not null, name varchar2(255 char), primary key (id))
@@ -22,3 +24,6 @@ insert into SYS_ROLE(id, name) VALUES (2, 'ROLE_USER');
 
 insert into SYS_USER_ROLES(sys_user_id, roles_id) VALUES (1, 1);
 insert into SYS_USER_ROLES(sys_user_id, roles_id) VALUES (2, 2);
+
+# spring batch
+create table PERSON (ID NUMBER NOT null primary key, name varchar2(20), age number, nation varchar2(20), address varchar2(20) );
