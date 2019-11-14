@@ -57,7 +57,7 @@ public class CsvBatchConfig {
         if (!pathResource.exists()) {
             log.info("文件不存在。。。。。。。。。。");
         }
-        log.info("文件不存在----------[]", pathResource.exists() );
+        log.info("文件存在----------{}, {}", pathResource.exists(), pathResource.getPath());
         // 使用 FlatFileItemReader 读取文件
         FlatFileItemReader<Person> reader = new  FlatFileItemReader<Person>();
         reader.setResource(pathResource);

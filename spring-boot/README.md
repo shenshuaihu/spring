@@ -27,3 +27,7 @@
     4、数据缓存cache
     5、非关系型数据库 MongoDB与Redis
         
+### ch9
+    1、Spring Security 自定义登录用户和密码
+    2、Spring Bactch 批量处理数据  
+                1w数据 耗时：3750ms        
