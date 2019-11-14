@@ -75,4 +75,8 @@ spring:
     cache: false
 
   batch:
+    # 开启初始化数据库
     initialize-schema: always
+    # 关闭自动执行
+    job:
+      enabled: false

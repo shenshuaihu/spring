@@ -15,6 +15,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
@@ -29,14 +30,13 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.item.validator.Validator;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.PathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
-import java.io.File;
 
 /**
  * @description:
@@ -46,27 +46,20 @@ import java.io.File;
  * @data: 2019-11-05 22:22
  */
 @Slf4j
-@Configuration
+//@Configuration
 @EnableBatchProcessing
-public class CsvBatchConfig {
+public class TriggerBatchConfig {
 
     @Bean
-    public ItemReader<Person> reader() throws Exception {
-        // 文件是否存在
-        PathResource pathResource = new PathResource("D:\\MyFile\\Develop\\IDEA\\demo\\spring\\spring-boot\\src\\main\\resources\\csv\\people.csv");
-        if (!pathResource.exists()) {
-            log.info("文件不存在。。。。。。。。。。");
-        }
-        log.info("文件不存在----------[]", pathResource.exists() );
-        // 使用 FlatFileItemReader 读取文件
-        FlatFileItemReader<Person> reader = new  FlatFileItemReader<Person>();
-        reader.setResource(pathResource);
-        // 模型映射
+    @StepScope
+    public FlatFileItemReader<Person> reader(@Value("#{jobParameters['input.file.name']}") String pathToFile) throws Exception{
+
+        FlatFileItemReader<Person> reader = new FlatFileItemReader<>();
         reader.setLineMapper(new DefaultLineMapper<Person>() {
             {
                 setLineTokenizer(new DelimitedLineTokenizer() {
                     {
-                        setNames(new String[]{"name", "age", "nation", "address"});
+                        setNames(new String[] {"name", "age", "nation", "address"});
                     }
                 });
                 setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {
@@ -78,6 +71,34 @@ public class CsvBatchConfig {
         });
         return reader;
     }
+
+    //@Bean
+    //public ItemReader<Person> reader() throws Exception {
+    //    // 文件是否存在
+    //    PathResource pathResource = new PathResource("D:\\MyFile\\Develop\\IDEA\\demo\\spring\\spring-boot\\src\\main\\resources\\csv\\people.csv");
+    //    if (!pathResource.exists()) {
+    //        log.info("文件不存在。。。。。。。。。。");
+    //    }
+    //    log.info("文件不存在----------[]", pathResource.exists() );
+    //    // 使用 FlatFileItemReader 读取文件
+    //    FlatFileItemReader<Person> reader = new  FlatFileItemReader<Person>();
+    //    reader.setResource(pathResource);
+    //    // 模型映射
+    //    reader.setLineMapper(new DefaultLineMapper<Person>(){
+    //        {setLineTokenizer(new DelimitedLineTokenizer() {
+    //            {
+    //                setNames(new String[] {"name", "age", "nation", "address"});
+    //            }
+    //        });
+    //        setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {
+    //            {
+    //                setTargetType(Person.class);
+    //            }
+    //        });
+    //        }
+    //    });
+    //    return reader;
+    //}
 
     @Bean
     public ItemProcessor<Person, Person> processor() {
