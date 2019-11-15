@@ -33,6 +33,7 @@ import org.springframework.batch.item.validator.Validator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.PathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -46,7 +47,7 @@ import javax.sql.DataSource;
  * @data: 2019-11-05 22:22
  */
 @Slf4j
-//@Configuration
+@Configuration
 @EnableBatchProcessing
 public class TriggerBatchConfig {
 
@@ -55,6 +56,7 @@ public class TriggerBatchConfig {
     public FlatFileItemReader<Person> reader(@Value("#{jobParameters['input.file.name']}") String pathToFile) throws Exception{
 
         FlatFileItemReader<Person> reader = new FlatFileItemReader<>();
+        reader.setResource(new PathResource(pathToFile));
         reader.setLineMapper(new DefaultLineMapper<Person>() {
             {
                 setLineTokenizer(new DelimitedLineTokenizer() {

@@ -46,7 +46,7 @@ import java.io.File;
  * @data: 2019-11-05 22:22
  */
 @Slf4j
-@Configuration
+//@Configuration
 @EnableBatchProcessing
 public class CsvBatchConfig {
 
@@ -60,6 +60,7 @@ public class CsvBatchConfig {
     public ItemReader<Person> reader() throws Exception {
         // 文件是否存在
         PathResource pathResource = new PathResource("D:\\MyFile\\Develop\\IDEA\\demo\\spring\\spring-boot\\src\\main\\resources\\csv\\people.csv");
+        ClassPathResource classPathResource = new ClassPathResource("D:\\MyFile\\Develop\\IDEA\\demo\\spring\\spring-boot\\src\\main\\resources\\csv\\people.csv");
         if (!pathResource.exists()) {
             log.info("文件不存在。。。。。。。。。。");
         }

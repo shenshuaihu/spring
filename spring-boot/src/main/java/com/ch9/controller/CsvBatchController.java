@@ -40,7 +40,7 @@ public class CsvBatchController {
      */
     @RequestMapping("/imp")
     public String imp(String fileName) throws Exception{
-        String path = "http://127.0.0.1:8888/imp?fileName=D:\\MyFile\\Develop\\IDEA\\demo\\spring\\spring-boot\\src\\main\\resources\\csv\\" + fileName + ".csv";
+        String path = "D:\\MyFile\\Develop\\IDEA\\demo\\spring\\spring-boot\\src\\main\\resources\\csv\\" + fileName + ".csv";
         jobParameters = new JobParametersBuilder()
                 .addLong("time", System.currentTimeMillis())
                 .addString("input.file.name", path)
