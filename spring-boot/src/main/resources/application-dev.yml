@@ -83,3 +83,7 @@ spring:
 
   activemq:
     broker-url: tcp://47.102.111.109:16016
+
+  rabbitmq:
+    host: 47.102.111.109
+    port: 16172

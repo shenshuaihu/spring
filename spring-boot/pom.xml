@@ -190,6 +190,12 @@
             <version>5.15.7</version>
         </dependency>
 
+        <!-- 异步消息 rabbit -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
 
     </dependencies>
 
