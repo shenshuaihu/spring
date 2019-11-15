@@ -80,3 +80,6 @@ spring:
     # 关闭自动执行
     job:
       enabled: false
+
+  activemq:
+    broker-url: tcp://47.102.111.109:16016
