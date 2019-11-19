@@ -37,7 +37,7 @@ public class MegSend implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         // my-destination 为目的地
-        jmsTemplate.send("my-destination", new Msg());
+      //  jmsTemplate.send("my-destination", new Msg());
 
 
         // rabbitMQ 向队发送消息

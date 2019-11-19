@@ -31,4 +31,4 @@
     1、Spring Security 安全控制 自定义登录用户和密码
     2、Spring Bactch 批量处理数据  
                 1w数据 耗时：3750ms  
-    3、异步消息````      
+    3、异步消息 ActiceMQ RabittMQ 

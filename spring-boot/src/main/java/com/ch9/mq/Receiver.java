@@ -27,7 +27,7 @@ public class Receiver {
      *
      * @param message 消息内容
      */
-    @JmsListener(destination = "my-destination")
+    //@JmsListener(destination = "my-destination")
     public void receiveActiveMQMessage(String message) {
 
         log.info("ActiveMQ接收到：<{}>", message);

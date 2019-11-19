@@ -27,9 +27,4 @@ insert into SYS_USER_ROLES(sys_user_id, roles_id) VALUES (2, 2);
 
 # spring batch
 create table PERSON (ID NUMBER NOT null primary key, name varchar2(20), age number, nation varchar2(20), address varchar2(20) );
-create sequence person_seq
-  minvalue 2000
-  maxvalue 9999999999
-  start with 2020
-  increment by 1
-  cache 20;
+create sequence person_seq  minvalue 2000  maxvalue 9999999999  start with 2020  increment by 1  cache 20;

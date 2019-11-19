@@ -23,10 +23,13 @@ import javax.validation.constraints.Size;
  * @data: 2019-07-11 11:57
  */
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person {
 
+    @Id
+    @GeneratedValue
     private Long id;
     @Size(max = 12, min = 2)
     private String name;
