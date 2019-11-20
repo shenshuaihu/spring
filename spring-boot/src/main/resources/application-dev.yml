@@ -81,9 +81,18 @@ spring:
     job:
       enabled: false
 
-  activemq:
-    broker-url: tcp://47.102.111.109:16018
+#  activemq:
+#    broker-url: tcp://47.102.111.109:16018
 
   rabbitmq:
     host: 47.102.111.109
     port: 16172
+
+# shell
+
+shell:
+  auth:
+    simple:
+      user:
+        name: ssh
+        password: ssh

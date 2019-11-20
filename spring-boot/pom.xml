@@ -232,6 +232,16 @@
             <artifactId>spring-boot-starter-integration</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-remote-shell</artifactId>
+            <version>1.3.0.M4</version>
+        </dependency>
 
     </dependencies>
 
